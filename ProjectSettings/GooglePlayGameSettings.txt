@@ -1,0 +1,9 @@
+lastUpgrade=00950
+proj.pluginVersion=0.9.50
+proj.AppId=15076149102585
+and.BundleId=com.rcgames.sanandreascrimegang2017
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0a%09%09%3cresources%3e%0a%09%09%3cstring+name%3d%22app_id%22%3e15076149102585%3c%2fstring%3e%0a%09%09%3cstring+name%3d%22package_name%22%3ecom.rcgames.sanandreascrimegang2017%3c%2fstring%3e%0a%09%09%3cstring+name%3d%22acheivement_welcome%22%3eCgkI-d2n1LEEADSDEAIQCw%3c%2fstring%3e%0a%09%09%3c%2fresources%3e
+and.ClientId=
+android.SetupDone=true

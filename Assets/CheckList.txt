@@ -1,0 +1,187 @@
+*	Open BaseScene -> Select 'AdsManager' -> Fill all Ids in Inspector
+
+	$	'XML Details' 
+		1.	Give 'xml base url'.
+		2.	Delete 'forbaseadsetup.xml' in resource folder. Download the xml using 'xml base url' and place it in the resources folder, and specify the name in 'Local Base xml file name'.
+		3.	Give 'xml url'.
+		4.	Delete 'foradesetup.xml' in resource folder. Download the xml using 'xml url' and place it in the resources folder, and specify the name in 'Local xml file name'.
+		5.	Select 'IsPortrait' if it is a portrait game, otherwise deselect it.
+
+	$	'Next Scene Details'
+		1.	'Next Scene Name'(Max Menu Scen Name).
+		2.	'Next Scene Loading' -> Now it's 0.5, can be kept same.
+
+	$	'Ad Ids'
+		1.	'Admob Intersitial ID'
+		2.	'Admob Video ID'
+		3.	'Unity Video ID'
+		4.	'Vungle Video ID'
+
+	$	'Store/InApps IDs'
+		1. 'Public Key'
+		2.	'Product IDs' Enter the size(number of product IDs) and fill the product id info
+				For each product id enter the name of product id and select if the product is consumable
+				(If a product can be purchased many times called as consumable like 'coins pack' & and the product can be purchased one time called as non consumable like 'No ads',
+				'unlock levels' & 'unlock all characters')
+		3.	 Purchaser.Instance.BuyProductID(index); // To buy the product
+
+	$	'PlayGameServices'
+		1.	Enter 'LeaderboardId'.
+		2.	'Achievement IDs' -> Enter the size(number of achievement ids) and fill the ids
+
+	$	'OneSignalID'
+		1.	Enter 'OneSignal App ID'
+		2.	Assets->Plugins->Android->OneSignalConfig->res-> all drawable folders contain 'ic_stat_onesignal_default', replace this image with your game icon.(dimensions & icon name should be same as now).
+		
+
+*	To Configure GooglePlayGames in the project
+	
+	$	Open -> Window -> GooglePlay Games -> Setup -> Android setup
+	$	In 'Resource Definition' text box change the PlayGameServices ID with given ID.
+		
+		<?xml version="1.0" encoding="utf-8"?>
+		<resources>
+		<string name="app_id">150769102585</string>
+		<string name="package_name">com.mtsgames.titanicshipsimulator</string>
+		<string name="acheivement_welcome">CgkI-d2n1LEEEAIQCw</string>
+		</resources>
+
+	$	PlayGameServicesHandler.Instance.AuthenticateOrLogin(); // To Sigin PlayGameServices.
+	$	PlayGameServicesHandler.Instance.Logout(); // To Signout PlayGameServices.
+	$	PlayGameServicesHandler.Instance.IsSignedIn; // Returns boolean value to know whether player is signed in or not.
+	$	PlayGameServicesHandler.Instance.PlayGamesButtonClick(); // Usually needs in menu, To handle SignIn and out depends on current status.
+	$	PlayGameServicesHandler.Instance.ShowLeaderBoard(); // To show leaderboard.
+	$	PlayGameServicesHandler.Instance.ShowAcheivements(); // To show achievements.
+	$	PlayGameServicesHandler.Instance.PushScoreToLeaderBoard(long score); // To push score to update in leaderboard with score as parameter.
+	$	PlayGameServicesHandler.Instance.UnlockAchievement(int id/ string achievement); // To unlock achievement, parameter can be int(index) as per ids in inspector or string(achievement name).
+	$	Add a boolean parametered method to PlayGameServicesHandler.PlayGamesSignInEvent to get the callback of PlayGames SingIn/SignOut events.
+
+*	Before showing 'Discount Popup'
+
+    $   if(AdsManager.Instance.isDiscountOn) 
+			//then show discount popup 
+	$	Set the 'Description' Text with AdsManager.Instance.discountDescription 
+
+*	To show ads & track the game(Used in analytics)
+
+	$	Menu	:	AdsManager.Instance.SetStatus(ReachedPage.Menu);
+	$	InGame	:	AdsManager.Instance.SetStatus(ReachedPage.InGame); // This is must, If you don't call this in gameplay, Ads will not be displayed in level complete and fail.
+	$	LevelComplete	:	AdsManager.Instance.SetStatusWithDelay(ReachedPage.LevelComplete, AdsManager.Instance.levelCompleteAdDelay); // will be called with ad delay.
+	$	LevelFail	:	AdsManager.Instance.SetStatusWithDelay(ReachedPage.LevelFail, AdsManager.Instance.levelFailAdDelay); // will be called with ad delay.
+
+		ReachedPage.Others is also available, If we have any other pages to set the status.
+
+*	To handle purchase success event
+
+	$	AdsManager.cs -> public void PurchaseSuccess(string productId) // This method will be called on purchase success event.
+	$	Call NoAds() in AdsManager.cs of purchasing noads.
+
+*	To show reward video and to handle success event
+	
+	$	To show video 
+		Eg : AdsManager.Instance.ShowRewardedVideo(RewardType.Coins); // Available RewardType enums are RewardType.Coins, RewardType.Unlock, RewardType.WatchToResume.
+	$	To handle reward videos success event
+		AdsManager.cs -> public void VideoRewardSuccess() // This method will be called on the Video successfully shown event.
+
+*	To handle Android native functionalities like showing toast
+
+	$	AdsManager.Instance.ShowToast(string msg); // To show the msg(string) as toast.
+
+
+*	To update coins 
+
+	$	Update 'GameConstants.COINS_PLAYERPREF' with your coins playerpref string.
+	$	Add methods(with int parameter) to CoinsAddedEvent to update coins when coins are added from  'AdsManager.Instance.AddCoins(int addCoins);'
+
+*	To configure FireBase Analytics
+
+	$	Search 'google-services' in Project view and replace it with the given one with the adsetup. Rememeber that name should not be changed, name should be 'google-services'.json(type)
+
+*	To show more games AdsManager.Instance.ShowMoreGames();
+
+*	Rate implementation
+	$	AdsManager.Instance.rateLevels contains level numbers to show rate popup from xml.
+	$	AdsManager.Instance.rateMessage contains rate message from xml.
+	$	You can show native rate popup using 
+		AdsManager.Instance.ShowRateDialog(int currentLevel);// It will check whether rate levels contains current level and the player rated the game already or not.
+		One more overloaded method for rate is also there
+		AdsManager.Instance.ShowRateDialog();// It will show the native rate popup directly if the player had not rated the game already.
+	$	AdsManager.Instance.IsRated; // It returns boolean, result is true if the player already rated.
+	$	If you are using custom rate popup, On rate button click you should call
+		AdsManager.Instance.RateGame();
+
+*	Share implementation
+	$	AdsManager.Instance.shareLevels contains level numbers to show share popup from xml.
+	$	AdsManager.Instance.rateMessage contains share message from xml.
+	$	You can show native share popup using
+		AdsManager.Instance.ShowShareDialog(int currentLevel);// It will check whether share levels contains current level.
+		One more overloaded method for share is also there
+		AdsManager.Instance.ShowShareDialog();// It will show the native share popup directly.
+	$	AdsManager.Instance.IsShared; // It returns boolean, result is true if the player already shared.
+	$	FacebookHandler.Instance.Share();  Or  BigCodeLibHandler.Instance.FBShare(); // To share the game(No FB login required). parametered method also available to change the description and title.
+	$	BigCodeLibHandler.Instance.NativeShare(string gameName,string description); // It opens all available sharing apps to share, GameName and Description as parameters.
+
+	WhatsApp Share 
+	$	BigCodeLibHandler.Instance.WhatsAppShare(); // can pass string as a parmeter
+	Twitter Share 
+	$	BigCodeLibHandler.Instance.TwitterShare(); // can pass string as a parmeter
+	GPlus Share 
+	$	BigCodeLibHandler.Instance.GPlusShare(); // can pass string as a parmeter
+
+*	To implement MoreGame popup ad
+
+	$	Create a button where ever you want
+	$	Add component MoreGamePopupHandler.cs
+		1.	Drag the moregamebutton object in inspector.(MoreGame button should have text as child).
+		2.	Button event should be MoreGamePopupHandler.cs -> OpenGame()
+	$	Follow the same procedure to get in any scene.
+
+*	To show Promo popup (native) -> AdsManager.Instance.ShowPromoPopup();
+	$ PromoSuccess() method in AdsManager.cs will get the promo code success call back.
+	$ AdsManager.Instance.promoCoins are the bonus coins on promo success.
+
+*	To show Alert popup -> AdsManager.Instance.ShowAlertDialog(); // with parameters
+
+*	SocialButtonEvents.cs contains the methods to like FB page, to follow twitter and to subscribe youtube channel.
+
+*	BigCode ->	PlayerPrefs ->	Delete	//to delete playerprefs.
+	BigCode	->	PlayerPrefs ->	SetKey	//to change/set playerprefs key,value pair.
+	
+*	Localization(Language Translation)
+	
+	$	Please check the GoogleDrive Sheet which is given to you with the adsetup, and update 'ENGLISH' column in the sheet, And please provide unique key for every row in 'KEY' column.
+	$	Once the translation is done, You can copy the whole sheet and replace the text in 'MultiLanguageData.txt' with the copied text.
+	$	If a TextMesh needs to be localized , Add 'TextObserver.cs' on any object and Drag the TextMesh to the 'textHolder' in Inspector and mention the 'Key' value in Inspector.
+	$	If a Canvas UI Text needs to be localized, Add 'UITextObserver.cs' on any object and Drag the Text to the 'textHolder' in Inspector and mention the 'Key' value in Inspector.
+	$	If a Canvas UI Images needs to be localized, Add 'ImageObserver.cs' on any object and Drag the Image to the 'targetImg' in Inspector and Drag and Drop all the Sprites to 
+		'sourceSprites' of all languages in Order(as per drive sheet) and mention the 'Key' value(any existing key) in Inspector.  
+	$	If a Sprite needs to be localized, Add 'SpriteObserver.cs' on any object and Drag the SpriteRenderer to the 'targetImg' in Inspector and Drag and Drop all the Sprites to 
+		'sourceSprites' of all languages in Order(as per drive sheet) and mention the 'Key' value(any existing key) in Inspector.  
+	$	Drag and Drop 'Canvas_Localization' prefab in any scene and set the UI to implement Language Selection.
+
+*	LocalNotifications
+	$	Assets->Plugins->Android->BigCodeNativeFunctionalities->res-> all drawable folders contain 'icon_localnotification', replace this image with your game icon.(dimensions & icon name should be same as now).
+	$	LocalNotificationHandler.ScheduleNotification(Time(In Seconds), NotificationText(To be displayed in notification)) to schedule a notification.
+	$	LocalNotificationHandler.CancelNotification(int id) to cancel particular notification, LocalNotificationHandler.CancelNotifications() to cancel all notifications.
+
+*	Facebook Setup
+	$	Facebook -> EditSettings and Enter AppId & AppName.
+	$	FacebookHandler.Instance.IsLoggedIn returns a boolean value of login status.
+	$	FacebookHandler.Instance.LoginClick(); To handler Facebook Login Button Click.
+	$	Add a boolean parametered method to FacebookHandler.LogInEvent to get the callback of FB LogIn/LogOut events.
+	$	FacebookHandler.Instance.Share(); to share on FB.
+
+Designining : 
+
+Local Notifications & One Singal notifications icons dimensions 
+24X38
+36X36
+16X25
+24X24
+32X50
+48X48
+48X75
+72X72
+
+
+

@@ -1,0 +1,14 @@
+<gameconfigs>
+<mpad img1="https://match3puzzlegames.s3.amazonaws.com/newgames/ads/main_portrait.jpg" img2="https://match3puzzlegames.s3.amazonaws.com/newgames/ads/main.jpg" linkto="market://details?id=com.mtsfreegames.rollercoaster&amp;referrer=integer_menuad" fullscreen="true"/>
+<menuad noneed="com.mtsfreegames.rollercoaster#com.mtsgames.titanicshipsimulator"/>
+<discount show="0" text="Get Special discount of flat 50% off"/>
+
+<mg exitland="https://bigcode.s3.amazonaws.com/exit_apple.html" exitport="https://bigcode.s3.amazonaws.com/exit_P.html"/>
+<MainMoreGames linkto="com.mtsgames.titanicshipsimulator"/><!--pub and mg-->
+
+<moregamepngs FolderLocation="https://bigcode.s3.amazonaws.com/allicons/"/>
+<moregame packageID="com.mtsfreegames.rollercoaster" downloadcoins="5000"/>
+<moregame packageID="com.mtsgames.titanicshipsimulator" downloadcoins="5000"/>
+<moregame packageID="com.integergames.bikegamesimpossiblestunts3d" downloadcoins="5000"/>
+
+</gameconfigs>

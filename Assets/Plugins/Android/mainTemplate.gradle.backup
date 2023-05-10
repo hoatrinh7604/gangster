@@ -1,0 +1,45 @@
+buildscript {
+  repositories {
+     jcenter()
+  }
+  dependencies {
+     classpath 'com.android.tools.build:gradle:2.1.0'
+  }
+ }
+  allprojects {
+  repositories {
+     flatDir {
+       dirs 'libs'
+     }
+  }
+ }
+ apply plugin: 'com.android.application'
+ dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+ **DEPS**}
+   android {
+    compileSdkVersion **APIVERSION**
+    buildToolsVersion '**BUILDTOOLS**'
+ defaultConfig {
+     targetSdkVersion **TARGETSDKVERSION**
+	 multiDexEnabled	true
+	 applicationId	'**APPLICATIONID**'
+ }
+ lintOptions {
+     abortOnError false
+ }
+ **SIGN**
+ buildTypes {
+     debug {
+         jniDebuggable true
+     }
+     release {
+         minifyEnabled false
+         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'
+         **SIGNCONFIG**
+     }
+ }
+  packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}

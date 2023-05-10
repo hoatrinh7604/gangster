@@ -1,0 +1,51 @@
+buildscript {
+  repositories {
+     jcenter()
+  }
+  dependencies {
+     classpath 'com.android.tools.build:gradle:2.1.0'
+  }
+ }
+  allprojects {
+  repositories {
+     flatDir {
+       dirs 'libs'
+     }
+  }
+ }
+ apply plugin: 'com.android.library'
+ dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+ **DEPS**}
+   android {
+	aaptOptions {
+		noCompress = ['.ress', '.resource', '.obb'] + unityStreamingAssets.tokenize(', ')
+		ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
+	}
+
+    compileSdkVersion **APIVERSION**
+    buildToolsVersion '**BUILDTOOLS**'
+ defaultConfig {
+consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
+     targetSdkVersion **TARGETSDKVERSION**
+	 multiDexEnabled	true
+	 applicationId	'**APPLICATIONID**'
+ }
+ lintOptions {
+     abortOnError false
+ }
+ **SIGN**
+ buildTypes {
+     debug {
+         jniDebuggable true
+     }
+     release {
+         minifyEnabled false
+         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'
+         **SIGNCONFIG**
+     }
+ }
+  packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}

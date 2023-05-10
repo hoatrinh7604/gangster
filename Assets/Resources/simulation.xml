@@ -1,0 +1,22 @@
+<gameconfigs>
+<mpad img1="https://igamesxml.s3.amazonaws.com/redcorner/ads/simulation_P.jpg" img2="https://igamesxml.s3.amazonaws.com/redcorner/ads/simulation.jpg" linkto="market://details?id=com.rcgames.megaramp.chainedbikes&amp;referrer=simulation_menuad" fullscreen="true"/>
+<menuad noneed="com.rcgames.megaramp.chainedbikes"/>
+
+<discount show="0" text="Get Special discount of flat 50% off"/>
+
+<mg exitland="https://igamesxml.s3.amazonaws.com/redcorner/basexml/exit.html" exitport="https://igamesxml.s3.amazonaws.com/redcorner/basexml/exit_all.html"/>
+
+<MainMoreGames linkto="Redcorner Games"/><!--pub and mg-->
+
+<!-- This is Only For single game-->
+<Freegame FreeImg="https://igamesxml.s3.amazonaws.com/bmg/newmg.jpg" FreeLink="market://details?id=com.rcgames.dinosaurhunter.dinosaurgames"/>
+
+<moregamepngs FolderLocation="https://igamesxml.s3.amazonaws.com/mg/"/>
+<moregame packageID="com.rcgames.megaramp.impossible3d" downloadcoins="0"/>
+<moregame packageID="com.rcgames.megaramp.impossiblestunts" downloadcoins="0"/>
+<moregame packageID="com.rcgames.megaramp.impossible" downloadcoins="0"/>
+<!--<moregame packageID="com.igames.indiantrainsimulator" downloadcoins="0"/>
+<moregame packageID="com.igames.bottleshoot" downloadcoins="0"/>
+<moregame packageID="com.igames.bubbleshootergame" downloadcoins="0"/>-->
+
+</gameconfigs>

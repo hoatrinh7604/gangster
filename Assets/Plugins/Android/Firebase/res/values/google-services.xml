@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="firebase_database_url" translatable="false">https://can-shooter-3d.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">386751357097</string>
+  <string name="google_storage_bucket" translatable="false">can-shooter-3d.appspot.com</string>
+  <string name="project_id" translatable="false">can-shooter-3d</string>
+  <string name="google_api_key" translatable="false">AIzaSyBZ3RkvjWo_-VjXNGAHkRidcv2XD4jjk0o</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBZ3RkvjWo_-VjXNGAHkRidcv2XD4jjk0o</string>
+  <string name="google_app_id" translatable="false">1:386751357097:android:89e78acce0b70e0e</string>
+  <string name="default_web_client_id" translatable="false">386751357097-s5fj56s7s1691cdsg9necogtvo95bh6c.apps.googleusercontent.com</string>
+</resources>

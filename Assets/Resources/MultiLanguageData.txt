@@ -1,0 +1,2 @@
+﻿KEY	ENGLISH 	SPANISH	PORTUGESE	ITALIAN	GERMAN	FRENCH	DUTCH	RUSSIAN	KOREAN	JAPANESE	CHINESE	ARABIC	HINDI	TAMIL
+play	Play	jugar	Toque	giocare	abspielen	jouer	spelen	играть	놀이	遊びます	玩	لعب	प्ले	விளையாட

@@ -1,0 +1,14 @@
+<!-- OurMenuAd_Chartboost_Admob_popup  use  ingameary 2, levelcompleteary 3, levelfailary 4, Store or Selection pages 5 -->
+<gameconfigs>
+
+<gdetails adtoaddelay="20" st="34_34" lcaddelay="1.0" lfaddelay="1.1"/><!--34=unity_34=Admob-->
+<adpref topVideo="1"/> <!--1=unity ,others 0-->
+
+<share urlFB="http://mygameshare.com/indiantrainsimulator/fb/" urlICON="http://mygameshare.com/icons/indiantrainsimulator.jpg"/>
+
+<promo enabled="1" promocoins="5000" code="PROMO2016"/>
+
+<ratepopup levelNums="3_7_10" ratemsg="Love Megaramp sanandreascrimegang2017 &#10;  Please Rate us!" ratecoins="0"/>
+<sharepopup levelNums="5_8_9" sharemsg="Love Megaramp sanandreascrimegang2017 &#10;  Please Share!" sharecoins="0"/>
+
+</gameconfigs>

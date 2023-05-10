@@ -1,0 +1,12 @@
+<!-- OurMenuAd_Chartboost_Admob_popup  use  ingameary 2, levelcompleteary 3, levelfailary 4, Store or Selection pages 5 -->
+<gameconfigs>
+
+<gdetails adtoaddelay="90" st="0_34" lcaddelay="1.1" lfaddelay="1.2"/>
+<adpref topVideo="1"/> <!--1=unity ,others 0-->
+
+<share urlFB="http://bigcode.co.in/balltrials3d/fb/" urlICON="http://bigcode.co.in/icons/balltrials3d.jpg"/>
+<promocode enabled="1" promocoins="5000" code="PROMO2016"/>
+<ratepopup levelNums="3_7_10" ratemsg="Love Ball Trials 3D Game &#10;  Please Rate us!" ratecoins="0"/>
+<sharepopup levelNums="5_8_9" sharemsg="Love Ball Trials 3D Game &#10;  Please Share!" sharecoins="0"/>
+
+</gameconfigs>
