@@ -123,7 +123,8 @@ public class RaycastWeapon : MonoBehaviour
         }
         else
         {
-            bullet.tracer.transform.position = end;
+            if(bullet.tracer)
+                bullet.tracer.transform.position = end;
         }
     }
 

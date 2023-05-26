@@ -1,5 +1,8 @@
-FightingAnimsetPro/Models/Maskman/Materials/Mask_S.tga filter=lfs diff=lfs merge=lfs -text
-FightingAnimsetPro/Models/Maskman/Materials/Body_S2.tga filter=lfs diff=lfs merge=lfs -text
-FightingAnimsetPro/Models/Maskman/Materials/Body_D.tga filter=lfs diff=lfs merge=lfs -text
-FightingAnimsetPro/Models/Maskman/Materials/Head_S.tga filter=lfs diff=lfs merge=lfs -text
-FightingAnimsetPro/Models/Maskman/Materials/Body_Logo_D.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Mask_S.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Body_S2.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Body_D.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Head_S.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Body_Logo_D.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Head_D.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Head_S.tga filter=lfs diff=lfs merge=lfs -text
+Assets/FightingAnimsetPro/Models/Maskman/Materials/Mask_D.tga filter=lfs diff=lfs merge=lfs -text

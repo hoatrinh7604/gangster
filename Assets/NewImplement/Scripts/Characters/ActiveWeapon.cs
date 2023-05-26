@@ -69,7 +69,8 @@ public class ActiveWeapon : MonoBehaviour
     void Update()
     {
         var weapon = GetWeapon(activeWeaponIndex);
-        if(weapon && !isHolstered)
+        bool notSprinting = rigController.GetCurrentAnimatorStateInfo(2).shortNameHash == Animator.StringToHash("notSprinting");
+        if(weapon && !isHolstered && notSprinting)
         {
             weapon.UpdateWeapon(Time.deltaTime);
         }
@@ -128,6 +129,7 @@ public class ActiveWeapon : MonoBehaviour
 
     IEnumerator SwitchWeapon(int holsterIndex, int activateIndex)
     {
+        rigController.SetInteger("weapon_index", activateIndex);
         yield return StartCoroutine(HolsterWeapon(holsterIndex));
         yield return StartCoroutine(ActivateWeapon(activateIndex));
         activeWeaponIndex = activateIndex;
